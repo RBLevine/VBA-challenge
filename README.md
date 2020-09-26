@@ -20,3 +20,16 @@ This repository contains:
 	implement the code provided in the stockMarketLoop.vbs file. I also added a button labelled "Clear"
 	that iterates through each worksheet in the workbook and deletes columns I through P so that the
 	stockMarketLoop can be ran again.
+3. clearData (VBS Script File):
+		This code, when implemented in a Module in VBA, will iterate through all shees in the open
+	workbook and delete rows I thorugh P. When ran through use of a Button, this speeds up the reset
+	time on a workbook so that code can be ran again and more easily identify if it's running correctly.
+4. Multiple_year_stock_data (Microsoft Excel Macro-Enabled Worksheet):
+		This is the large data set that we need to run the code on. I have added the stockMarketLoop
+	code to Module 1 and the clearData code to Module 2.
+5. 2014-results (PNG File):
+		This is a screen shot of the results my code prints to the excel sheet for the 2014 tab.
+6. 2015-results (PNG File):
+		This is a screen shot of the results my code prints to the excel sheet for the 2015 tab.
+7. 2016-results (PNG File):
+		This is a screen shot of the results my code prints to the excel sheet for the 2016 tab.
