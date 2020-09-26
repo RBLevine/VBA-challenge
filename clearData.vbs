@@ -4,7 +4,7 @@ Sub clearData()
     For Each ws In ThisWorkbook.Worksheets
         'delete columns I-P
         For i = 9 To 16:
-            Columns(i).EntireColumn.Delete
+            ws.Columns(9).EntireColumn.Delete
         Next i
     Next ws
 End Sub
