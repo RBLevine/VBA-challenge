@@ -17,4 +17,6 @@ This repository contains:
 	corresponding Ticker for each of those values.
 2. testing_database (Microsoft Excel Macro-Enabled Worksheet):
 		This is the data provided to us for testing. I added a button labelled "Analyze" to quickly
-	implement the code provided in the stockMarketLoop.vbs file
+	implement the code provided in the stockMarketLoop.vbs file. I also added a button labelled "Clear"
+	that iterates through each worksheet in the workbook and deletes columns I through P so that the
+	stockMarketLoop can be ran again.
