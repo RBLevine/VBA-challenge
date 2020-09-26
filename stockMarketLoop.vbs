@@ -84,35 +84,43 @@ For Each ws In ThisWorkbook.Worksheets
             End If
         Next i
         
+        
+        'find last row of the printed data
         Dim lastRow2 As Double
         lastRow2 = ws.Range("I1").CurrentRegion.End(xlDown).Row
+        
+        'set variables for finding greatest increase, decrease, and volume
+        'create place holder for max percent amount, and ticker, set value to 0
         Dim MaxValue As Double
         Dim maxTic As String
         MaxValue = 0
-        'MaxValue = Application.WorksheetFunction.Max(Range("K:K"))
+        
+        'create place holder for min percent amount, and ticker, set value to 0
         Dim MinValue As Double
         Dim minTic As String
         MinValue = 0
-        'MinValue = Application.WorksheetFunction.Min(Range("K:K"))
+        
+        'create place holder for max volume amount, and ticker, set value to 0
         Dim GreatestVolume As Double
         Dim volTic As String
         GreatestVolume = 0
-        'GreatestVolume = Application.WorksheetFunction.Max(Range("L:L"))
         
+        'goes through printed, condensed data
         For i = 2 To lastRow2:
             If ws.Cells(i, 11).Value <> 0 Then
-                        
+                'if percent is greater than current MaxValue, set value to new percent, update ticker
                 If ws.Cells(i, 11).Value > MaxValue Then
                     MaxValue = ws.Cells(i, 11).Value
                     maxTic = ws.Cells(i, 9).Value
+                'if percent is less than current MinValue, set value to new percent, update ticker
                 ElseIf ws.Cells(i, 11) < MinValue Then
                     MinValue = ws.Cells(i, 11).Value
                     minTic = ws.Cells(i, 9).Value
                 End If
-                
             End If
-            If ws.Cells(i, 12) <> 0 Then
             
+            If ws.Cells(i, 12) <> 0 Then
+                'if volume is greater than current GreatestVolume, set value to new percent, update ticker
                 If ws.Cells(i, 12) > GreatestVolume Then
                     GreatestVolume = ws.Cells(i, 12)
                     volTic = ws.Cells(i, 9).Value
@@ -120,25 +128,34 @@ For Each ws In ThisWorkbook.Worksheets
             End If
         Next i
         
+        'print out headers of columns and rows
         ws.Cells(2, 14).Value = "Greatest % Increase"
         ws.Cells(3, 14).Value = "Greatest % Decrease"
         ws.Cells(4, 14).Value = "Greatest Total Volume"
         ws.Cells(1, 15).Value = "Ticker"
         ws.Cells(1, 16).Value = "Value"
         
+        'print out max value and ticker, format to percent
         ws.Cells(2, 15).Value = maxTic
         ws.Cells(2, 16).Value = MaxValue
         ws.Cells(2, 16) = Format(ws.Cells(2, 16).Value, "Percent")
+        
+        'print out min value and ticker, format to percent
         ws.Cells(3, 15).Value = minTic
         ws.Cells(3, 16).Value = MinValue
         ws.Cells(3, 16) = Format(ws.Cells(3, 16).Value, "Percent")
+        
+        'print out volume and ticker
         ws.Cells(4, 15).Value = volTic
         ws.Cells(4, 16).Value = GreatestVolume
-        'ws.Cells(4, 16) = Format(ws.Cells(4, 16).Value, "General")
+    
+    'set entire used range to AutoFit so all data can easily be seen
     ws.UsedRange.Columns.AutoFit
     
     
 Next ws
+
 End Sub
+
 
 
